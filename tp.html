@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Gestion des stagiaires</title>
+   <link rel="stylesheet" href="./botssrap.css">
+   <style>
+      * {
+         font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+         padding: 6px;
+         width: 93%;
+         border-radius: 8px;
+         color: #fff;
+         text-align: center;
+      }
+
+      .titre {
+         display: flex;
+      }
+
+      .plus {
+         height: 60px;
+         width: 4%;
+         font-size: 20px;
+         font-weight: 600;
+      }
+
+      .card {
+         width: 300px;
+         margin: 10px;
+      }
+
+      .edit img {
+         width: 40px;
+         height: 40px;
+      }
+
+      .derry,
+      .bent {
+         width: 220px;
+         height: 220px;
+         border-radius: 50%;
+         margin: 0px 25px;
+      }
+
+      .bent,
+      .benttt {
+         background-color: rgb(254, 236, 214);
+      }
+
+      .derry {
+         background-color: rgb(216, 230, 255);
+      }
+
+      .blue {
+         background-color: rgb(144, 182, 254);
+      }
+
+      .pink {
+         background-color: rgb(242, 214, 180);
+      }
+
+      .bentt {
+         background-color: chocolate;
+      }
+
+      .h2 {
+         color: chocolate;
+      }
+
+      div span {
+         background-color: rgb(106, 106, 232);
+      }
+
+      h4 {
+         background-color: rgb(216, 230, 255);
+      }
+
+      h2 {
+         color: rgb(106, 106, 232);
+      }
+
+      h5 {
+         font-size: 30px;
+         font-weight: 700;
+         text-align: center;
+      }
+
+      input,
+      select {
+         height: 50px;
+         border-radius: 5px;
+         border: 1px solid #000;
+         margin-top: 10px !important;
+      }
+
+      .input {
+         width: 30% !important;
+         /* margin-left: 10px; */
+      }
+
+      .select {
+         width: 63% !important;
+
+      }
+
+      .ajouter {
+         width: 250px;
+         margin: 0px auto;
+      }
+
+      .edit button {
+         background-color: transparent;
+         border: none;
+      }
+
+      #form {
+         display: flex;
+         justify-content: space-around;
+         display: none;
+      }
+      /* #form2 {
+         display: flex;
+         justify-content: space-around;
+         display: none;
+      } */
+
+      #warning p {
+         font-size: 40px;
+         text-align: center;
+      }
+
+      #warning img {
+         display: block;
+         margin: 0px auto;
+      }
+
+      #warning div {
+         display: flex;
+         justify-content: center;
+
+      }
+
+      #warning button {
+         margin-left: 10px;
+         width: 25%;
+      }
+
+      #warning {
+         display: none;
+      }
+      #modify{
+         display: none;
+      }
+   </style>
+</head>
+
+<body>
+
+   <section class="container my-5">
+      <div class="titre">
+         <h1 class="bg-success"> Listes des stagiaires</h1>
+         <button onclick="afficher()" class="btn btn-success mx-2 plus"> + </button>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm my-3" onclick="Developpementsort()">Développement Digital</button>
+      <button type="button" class="btn btn-secondary btn-sm my-3" onclick="IXsort()">UI/UX</button>
+      <button type="button" class="btn btn-secondary btn-sm my-3" onclick="Infrastructuresort()">Infrastructure Digital</button>
+      <button type="button" class="btn btn-secondary btn-sm my-3" onclick="IAsort()">Intelligence Artificielle</button>
+      <article class="row container my-4" id="form">
+         <h5 class="text-success my-5">Formulaire d'inscription</h5>
+         <input type="text" id="name" placeholder="name" class="col-4 input">
+         <input type="text" id="prenom" placeholder="Prénom" class="col-4 input">
+         <select name="genre" id="genre" class="col-4 input">
+            <option value="">Genre</option>
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
+         </select>
+         <select name="specialite" id="specialite" class="col-8 select">
+            <option value="DD">Développement Digital</option>
+            <option value="IX">UI/UX</option>
+            <option value="ID">Infrastructure Digital</option>
+            <option value="IA">Intelligence Artificielle</option>
+         </select>
+         <input type="text" class="col-4 input" id="classe" placeholder="Classe ...">
+         <input type="text" class="col-4 input" id="M101" placeholder="Note M101...">
+         <input type="text" class="col-4 input" id="M102" placeholder="Note M102...">
+         <input type="text" class="col-4 input" id="M103" placeholder="Note M103...">
+         <button onclick="ajouter()" class="btn btn-success btn-lg my-5 ajouter" id="ajouter">Ajouter le Stagiaire</button>
+         <button onclick="modifyy()" class="btn btn-success btn-lg my-5 ajouter" id="modify">Modifier le Stagiaire</button>
+      </article>
+      <!-- <article class="row container my-4" id="form2">
+         <h5 class="text-success my-5">Formulaire d'inscription</h5>
+         <input type="text" id="name2" placeholder="name" class="col-4 input">
+         <input type="text" id="prenom2" placeholder="Prénom" class="col-4 input">
+         <select name="genre" id="genre2" class="col-4 input">
+            <option value="">Genre</option>
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
+         </select>
+         <select name="specialite" id="specialite2" class="col-8 select">
+            <option value="DD">Développement Digital</option>
+            <option value="IX">UI/UX</option>
+            <option value="ID">Infrastructure Digital</option>
+            <option value="IA">Intelligence Artificielle</option>
+         </select>
+         <input type="text" class="col-4 input" id="classe2" placeholder="Classe ...">
+         <input type="text" class="col-4 input" id="M1012" placeholder="Note M101...">
+         <input type="text" class="col-4 input" id="M1022" placeholder="Note M102...">
+         <input type="text" class="col-4 input" id="M1032" placeholder="Note M103...">
+         <button onclick="modifier2()" class="btn btn-success btn-lg my-5 ajouter">Modifier le Stagiaire</button>
+      </article> -->
+      <main id="warning">
+         <!-- <img src="./images/warning-removebg-preview.png" alt="warning">
+         <p class="text-primary">Voulez vous vraiment supprimer le stagiaire <span id="n&p"></span>?</p>
+         <div>
+            <button onclick="confirmer()" class="btn btn-primary btn-lg">Confirmer</button>
+            <button onclick="annuler()" class="btn btn-secondary btn-lg">Annuler</button>
+         </div> -->
+      </main>
+      <main class="row" id="st_cards">
+
+      </main>
+   </section>
+
+<script src="./tp.js"></script>
+   <script src="./bootstarp.js"></script>
+</body>
+
+</html>
